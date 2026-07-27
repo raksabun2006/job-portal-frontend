@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@theme {
+  --color-paper: #f6f7f5;
+
+  --color-ink-100: #e2e6ec;
+  --color-ink-700: #1e3654;
+  --color-ink-800: #16283f;
+  --color-ink-900: #101e33;
+  --color-ink-950: #0b1626;
+
+  --color-teal-500: #0e9f8e;
+  --color-teal-600: #0b8577;
+
+  --color-gold-400: #f0ad3d;
+  --color-gold-500: #e6982a;
+  --color-gold-600: #c38124;
+
+  --font-khmer: "Khmer OS Siem Reap", "Noto Sans Khmer", system-ui, sans-serif;
+  --shadow-card: 0 1px 2px rgba(16, 30, 51, 0.06), 0 8px 24px rgba(16, 30, 51, 0.06);
+}
+
+@layer base {
+  html, body {
+    @apply bg-paper text-ink-900;
+  }
+
+  body {
+    font-family: var(--font-khmer);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-khmer);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal-500, #14b8a6);
+    outline-offset: 2px;
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+@utility btn-primary {
+  @apply btn bg-ink-900 text-white hover:bg-ink-800;
+}
+@utility btn-accent {
+  @apply btn bg-gold-500 text-ink-950 hover:bg-gold-400;
+}
+@utility btn-outline {
+  @apply btn border border-ink-900/15 text-ink-900 hover:bg-ink-900/5;
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-md border border-ink-900/15 bg-white px-3.5 py-2.5 text-sm placeholder:text-ink-900/40 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 outline-hidden;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-800;
+  }
+  .card {
+    @apply rounded-lg border border-ink-900/8 bg-white shadow-card;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+}
