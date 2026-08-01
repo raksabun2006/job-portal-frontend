@@ -5,14 +5,13 @@ const api = axios.create({
   headers: { Accept: 'application/json' },
 })
 
-// Attach the bearer token (if present) to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
   if (token) config.headers.Authorization = `Bearer ${token}`
   return config
 })
 
-// Auto-logout on 401 (expired/invalid token)
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {

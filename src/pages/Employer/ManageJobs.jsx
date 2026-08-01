@@ -6,12 +6,14 @@ import { useAuth } from "../../hooks/useAuth";
 import StatusBadge from "../../components/StatusBadge";
 import Loader from "../../components/Loader";
 import EmptyState from "../../components/EmptyState";
+import QRCodeModal from "../../components/QRCodeModal";
 
 export default function ManageJobs() {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [qrJob, setQrJob] = useState(null);
 
   const load = useCallback(async () => {
     if (!user?.company?.id) {
@@ -117,6 +119,12 @@ export default function ManageJobs() {
               </div>
               <div className="flex items-center gap-3">
                 <StatusBadge status={job.status} />
+                <button
+                  onClick={() => setQrJob(job)}
+                  className="text-sm font-medium text-teal-600 hover:underline"
+                >
+                  QR កូដ
+                </button>
                 <Link
                   to={`/employer/jobs/${job.id}/applicants`}
                   className="text-sm font-medium text-teal-600 hover:underline"
@@ -140,6 +148,8 @@ export default function ManageJobs() {
           ))}
         </div>
       )}
+
+      <QRCodeModal job={qrJob} onClose={() => setQrJob(null)} />
     </div>
   );
 }

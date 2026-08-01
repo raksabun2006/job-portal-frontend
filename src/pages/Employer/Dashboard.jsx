@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Loader from '../../components/Loader'
+import AvatarUpload from '../../components/AvatarUpload'
 import { useAuth } from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { getCompany } from '../../api/companies'
@@ -20,8 +21,16 @@ export default function EmployerDashboard() {
   if (company === undefined) return <Loader />
 
   return (
-    <div>
-      <h1 className="text-xl font-semibold text-ink-950">ផ្ទាំងគ្រប់គ្រងនិយោជក · Employer Dashboard</h1>
+    <div className="space-y-6">
+      <div className="flex flex-col gap-4 rounded-2xl border border-ink-900/8 bg-white p-6 shadow-sm sm:flex-row sm:items-center">
+        <AvatarUpload fallback="E" />
+        <div>
+          <h1 className="text-xl font-semibold text-ink-950">ផ្ទាំងគ្រប់គ្រងនិយោជក · Employer Dashboard</h1>
+          <p className="mt-1 text-xs text-ink-800/60">
+            {user?.name} · {user?.email}
+          </p>
+        </div>
+      </div>
 
       {!company ? (
         <div className="card mt-6 p-6 text-center">

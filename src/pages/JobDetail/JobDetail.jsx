@@ -5,6 +5,7 @@ import { getJob, toggleSaveJob } from '../../api/jobs'
 import { applyToJob } from '../../api/applications'
 import { useAuth } from '../../hooks/useAuth'
 import Loader from '../../components/Loader'
+import JobQRCode from '../../components/JobQRCode'
 
 function formatSalary(min, max) {
   if (!min && !max) return null
@@ -208,6 +209,14 @@ export default function JobDetail() {
               >
                 {saved ? 'បានរក្សាទុក' : 'រក្សាទុកការងារនេះ'}
               </button>
+            </div>
+
+            {/* Scan to Apply QR Card */}
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-ink-950">ស្កេនដើម្បីដាក់ពាក្យ · Scan to Apply</h3>
+              <div className="mt-4">
+                <JobQRCode jobId={job.id} jobTitle={job.title} size={160} />
+              </div>
             </div>
 
             {/* Company Card */}

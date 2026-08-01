@@ -26,11 +26,11 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100 p-4 font-sans">
-      <div className="w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-xl md:flex">
+    <div className="flex h-screen w-screen overflow-hidden bg-slate-100 font-sans">
+      <div className="flex h-full w-full bg-white">
         
-        {/* Left Side: Promotional Banner with Background Image */}
-        <div className="relative flex flex-col justify-between p-8 text-white md:w-1/2 md:p-12">
+        {/* Left Side: Full Height Promotional Banner */}
+        <div className="relative hidden flex-col justify-between p-8 text-white md:flex md:w-1/2 lg:p-16">
           
           {/* Background Image & Gradient Overlay */}
           <img 
@@ -46,17 +46,17 @@ export default function Login() {
               <img 
                 src="/images/logo.png" 
                 alt="Logo" 
-                className="h-8 w-auto object-contain" 
+                className="h-10 w-auto object-contain" 
               />
             </Link>
           </div>
 
           {/* Center Message */}
-          <div className="relative z-10 my-12">
-            <h1 className="text-2xl font-bold leading-relaxed md:text-3xl lg:leading-snug">
+          <div className="relative z-10 my-auto">
+            <h1 className="text-3xl font-bold leading-relaxed lg:text-4xl lg:leading-snug">
               ស្វែងរកការងារក្នុងក្ដីស្រមៃរបស់អ្នក
             </h1>
-            <p className="mt-3 text-sm text-slate-200 leading-relaxed">
+            <p className="mt-4 text-base text-slate-200 leading-relaxed">
               ចូលដើម្បីបន្តស្វែងរកការងារ ឬគ្រប់គ្រងការជ្រើសរើសបុគ្គលិកសម្រាប់ក្រុមហ៊ុនរបស់អ្នក។
             </p>
           </div>
@@ -67,68 +67,70 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Right Side: Login Form */}
-        <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
-          <div>
-            <h2 className="text-2xl font-bold text-slate-900">ចូលគណនី · Login</h2>
-            <p className="mt-1 text-sm text-slate-500">សូមបញ្ចូលព័ត៌មានលម្អិតរបស់អ្នកដើម្បីបន្ត។</p>
-          </div>
-
-          <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
+        {/* Right Side: Full Height Login Form */}
+        <div className="flex h-full w-full flex-col justify-center overflow-y-auto p-8 md:w-1/2 lg:p-16">
+          <div className="mx-auto w-full max-w-md">
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700">
-                អ៊ីមែល · Email
-              </label>
-              <input 
-                type="email" 
-                placeholder="name@example.com" 
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
-                {...register('email', { required: true })} 
-              />
-              {errors.email && <p className="mt-1 text-xs text-rose-600">សូមបញ្ចូលអ៊ីមែលរបស់អ្នក។</p>}
+              <h2 className="text-3xl font-bold text-slate-900">ចូលគណនី · Login</h2>
+              <p className="mt-2 text-sm text-slate-500">សូមបញ្ចូលព័ត៌មានលម្អិតរបស់អ្នកដើម្បីបន្ត។</p>
             </div>
 
-            <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700">
-                ពាក្យសម្ងាត់ · Password
-              </label>
-              <input 
-                type="password" 
-                placeholder="••••••••" 
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
-                {...register('password', { required: true })} 
-              />
-              {errors.password && <p className="mt-1 text-xs text-rose-600">សូមបញ្ចូលពាក្យសម្ងាត់របស់អ្នក។</p>}
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700">
+                  អ៊ីមែល · Email
+                </label>
+                <input 
+                  type="email" 
+                  placeholder="name@example.com" 
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
+                  {...register('email', { required: true })} 
+                />
+                {errors.email && <p className="mt-1 text-xs text-rose-600">សូមបញ្ចូលអ៊ីមែលរបស់អ្នក។</p>}
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700">
+                  ពាក្យសម្ងាត់ · Password
+                </label>
+                <input 
+                  type="password" 
+                  placeholder="••••••••" 
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
+                  {...register('password', { required: true })} 
+                />
+                {errors.password && <p className="mt-1 text-xs text-rose-600">សូមបញ្ចូលពាក្យសម្ងាត់របស់អ្នក។</p>}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100"
+              >
+                {isSubmitting && (
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                )}
+                {isSubmitting ? 'កំពុងចូល...' : 'ចូលគណនី · Login'}
+              </button>
+            </form>
+
+            <div className="my-6 flex items-center gap-3">
+              <div className="h-px flex-1 bg-slate-200" />
+              <span className="text-xs uppercase tracking-wider text-slate-400">ឬ · or</span>
+              <div className="h-px flex-1 bg-slate-200" />
             </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-600/20 transition-all hover:bg-blue-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100"
-            >
-              {isSubmitting && (
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-              )}
-              {isSubmitting ? 'កំពុងចូល...' : 'ចូលគណនី · Login'}
-            </button>
-          </form>
+            <div className="flex justify-center">
+              <GoogleLoginButton role="candidate" />
+            </div>
 
-          <div className="my-6 flex items-center gap-3">
-            <div className="h-px flex-1 bg-slate-200" />
-            <span className="text-xs uppercase tracking-wider text-slate-400">ឬ · or</span>
-            <div className="h-px flex-1 bg-slate-200" />
+            <p className="mt-8 text-center text-sm text-slate-600">
+              មិនទាន់មានគណនី?{' '}
+              <Link to="/register" className="font-semibold text-blue-600 hover:underline">
+                ចុះឈ្មោះ
+              </Link>
+            </p>
           </div>
-
-          <div className="flex justify-center">
-            <GoogleLoginButton role="candidate" />
-          </div>
-
-          <p className="mt-8 text-center text-sm text-slate-600">
-            មិនទាន់មានគណនី?{' '}
-            <Link to="/register" className="font-semibold text-blue-600 hover:underline">
-              ចុះឈ្មោះ
-            </Link>
-          </p>
         </div>
 
       </div>

@@ -4,6 +4,7 @@ import { getMyApplications } from '../../api/applications'
 import { getMyResume } from '../../api/resumes'
 import StatusBadge from '../../components/StatusBadge'
 import Loader from '../../components/Loader'
+import AvatarUpload from '../../components/AvatarUpload'
 import { useAuth } from '../../hooks/useAuth'
 
 export default function CandidateDashboard() {
@@ -23,32 +24,12 @@ export default function CandidateDashboard() {
 
   if (applications === null) return <Loader />
 
-  // Format avatar URL (if relative path, prepends local API host)
-  const getAvatarUrl = (avatarPath) => {
-    if (!avatarPath) return null
-    if (avatarPath.startsWith('http')) return avatarPath
-    return `http://127.0.0.1:8000/storage/${avatarPath.replace(/^\//, '')}`
-  }
-
-  const avatarUrl = getAvatarUrl(user?.avatar || user?.profile_photo_url)
-
   return (
     <div className="space-y-8">
       {/* Candidate Profile Header Widget */}
       <div className="flex flex-col gap-4 rounded-2xl border border-ink-900/8 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
-          {/* User Avatar */}
-          {avatarUrl ? (
-            <img
-              src={avatarUrl}
-              alt={user?.name || 'Candidate'}
-              className="h-16 w-16 shrink-0 rounded-full border-2 border-teal-600/20 object-cover p-0.5"
-            />
-          ) : (
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-teal-50 text-xl font-bold text-teal-700 border border-teal-600/20">
-              {user?.name?.charAt(0)?.toUpperCase() || 'C'}
-            </div>
-          )}
+          <AvatarUpload fallback="C" />
 
           <div>
             <div className="flex items-center gap-2">

@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { getAdminStats } from '../../api/admin'
 import StatusBadge from '../../components/StatusBadge'
 import Loader from '../../components/Loader'
+import AvatarUpload from '../../components/AvatarUpload'
+import { useAuth } from '../../hooks/useAuth'
 
 export default function AdminDashboard() {
+  const { user } = useAuth()
   const [stats, setStats] = useState(null)
 
   useEffect(() => {
@@ -32,13 +35,16 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8">
       {/* Page Header */}
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-ink-900">
-          ផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រង · Admin Dashboard
-        </h1>
-        <p className="mt-1 text-xs text-ink-800/60">
-          ទិន្នន័យស្ថិតិសរុបរបស់ប្រព័ន្ធ និងការវិភាគពាក្យសុំការងារ
-        </p>
+      <div className="flex flex-col gap-4 rounded-2xl border border-ink-900/8 bg-white p-6 shadow-sm sm:flex-row sm:items-center">
+        <AvatarUpload fallback="A" />
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-ink-900">
+            ផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រង · Admin Dashboard
+          </h1>
+          <p className="mt-1 text-xs text-ink-800/60">
+            {user?.name ? `${user.name} · ` : ''}ទិន្នន័យស្ថិតិសរុបរបស់ប្រព័ន្ធ និងការវិភាគពាក្យសុំការងារ
+          </p>
+        </div>
       </div>
 
       {/* Primary Overview Cards Grid */}

@@ -31,6 +31,7 @@ import AdminDashboard from './pages/Admin/Dashboard'
 import AdminUsers from './pages/Admin/ManageUsers'
 import AdminJobs from './pages/Admin/ManageJobs'
 import AdminCompanies from './pages/Admin/ManageCompanies'
+import AboutUs from './pages/about/AboutUs'
 
 const candidateLinks = [
   { to: '/candidate', label: 'ទិដ្ឋភាពទូទៅ', end: true },
@@ -65,6 +66,7 @@ export default function App() {
             <Route path="/jobs/:id" element={<JobDetail />} />
             <Route path="/companies" element={<Companies />} />
             <Route path="/companies/:id" element={<CompanyDetail />} />
+            <Route path="/about" element={<AboutUs/>} />
           </Route>
 
           {/* Auth (no navbar/footer) */}
