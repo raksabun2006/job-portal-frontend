@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getMyApplications } from '../../api/applications'
 import { getMyResume } from '../../api/resumes'
+import { API_ORIGIN } from '../../api/axios'
 import StatusBadge from '../../components/StatusBadge'
 import Loader from '../../components/Loader'
 import AvatarUpload from '../../components/AvatarUpload'
@@ -147,7 +148,7 @@ export default function CandidateDashboard() {
                       src={
                         a.job.company.logo.startsWith('http')
                           ? a.job.company.logo
-                          : `http://127.0.0.1:8000/storage/${a.job.company.logo.replace(/^\//, '')}`
+                          : `${API_ORIGIN}/storage/${a.job.company.logo.replace(/^\//, '')}`
                       }
                       alt={a.job.company.name}
                       className="h-10 w-10 shrink-0 rounded-xl border border-ink-900/10 object-contain p-1"

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { getMyResume, saveResume, uploadResumeFile } from '../../api/resumes'
+import { API_BASE_URL } from '../../api/axios'
 import Loader from '../../components/Loader'
 
 export default function Resume() {
@@ -61,7 +62,7 @@ export default function Resume() {
     try {
       const token = localStorage.getItem('token') // Adjust key name if you store token under a different key in localStorage
 
-      const response = await fetch('http://127.0.0.1:8000/api/resume/download', {
+      const response = await fetch(`${API_BASE_URL}/resume/download`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,

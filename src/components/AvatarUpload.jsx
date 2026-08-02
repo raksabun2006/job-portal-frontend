@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import { updateAvatar } from '../api/auth'
+import { API_ORIGIN } from '../api/axios'
 import { useAuth } from '../hooks/useAuth'
 
 const MAX_AVATAR_BYTES = 2 * 1024 * 1024 // backend limit: image, max 2048 KB
@@ -8,7 +9,7 @@ const MAX_AVATAR_BYTES = 2 * 1024 * 1024 // backend limit: image, max 2048 KB
 export function getAvatarUrl(avatarPath) {
   if (!avatarPath) return null
   if (avatarPath.startsWith('http')) return avatarPath
-  return `http://127.0.0.1:8000/storage/${avatarPath.replace(/^\//, '')}`
+  return `${API_ORIGIN}/storage/${avatarPath.replace(/^\//, '')}`
 }
 
 export default function AvatarUpload({ sizeClass = 'h-16 w-16', fallback = 'U' }) {
