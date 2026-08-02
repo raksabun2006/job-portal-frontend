@@ -71,14 +71,6 @@ export default function AboutUs() {
       image: "./images/saa.jpg",
       linkedin: "https://linkedin.com",
       github: "https://github.com/raksasbun2006"
-    },
-    {
-      name: "Heng Menghort",
-      role: "Backend developer",
-      bio: "Architecting modern, reliable, and scalable technology for job seekers and employers.",
-      image: "./images/team.jpg",
-      linkedin: "https://linkedin.com",
-      github: "https://github.com"
     }
   ];
 
