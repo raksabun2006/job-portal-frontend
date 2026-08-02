@@ -68,7 +68,7 @@ export default function AboutUs() {
       name: "Bun Raksa",
       role: "Backend developer",
       bio: "I'm second year student at RUPP. ",
-      image: "./images/me.JPEG",
+      image: "./images/saa.jpg",
       linkedin: "https://linkedin.com",
       github: "https://github.com/raksasbun2006"
     },
