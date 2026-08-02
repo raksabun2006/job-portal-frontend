@@ -1,16 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  HiOutlineBuildingOffice2, 
-  HiOutlineBolt, 
-  HiOutlineCursorArrowRays, 
-  HiOutlineShieldCheck,
-  HiOutlineViewfinderCircle,
-  HiOutlineEye,
-  HiOutlineHeart, 
-  HiOutlineArrowRight,
-  HiOutlineBriefcase,
-  HiOutlineUsers,
   HiOutlineGlobeAlt,
   HiOutlineCodeBracket
 } from 'react-icons/hi2';
@@ -30,7 +20,6 @@ export default function AboutUs() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           
-          {/* Section Header */}
           <div className="text-center">
             <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               About The Developer
@@ -43,7 +32,6 @@ export default function AboutUs() {
             </p>
           </div>
 
-          {/* Single Developer Card */}
           <div className="mt-12 flex justify-center">
             <div className="group flex w-full max-w-xl flex-col items-center rounded-[24px] border border-slate-200/80 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30 sm:p-10">
               <div className="relative mb-6 h-32 w-32 overflow-hidden rounded-full ring-4 ring-blue-50 transition-transform duration-300 group-hover:scale-105 dark:ring-slate-800">
