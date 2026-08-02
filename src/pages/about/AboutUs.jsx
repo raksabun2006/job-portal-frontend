@@ -68,15 +68,15 @@ export default function AboutUs() {
       name: "Bun Raksa",
       role: "Backend developer",
       bio: "I'm second year student at RUPP. ",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      image: "./images/me.JPEG",
       linkedin: "https://linkedin.com",
-      github: "https://github.com"
+      github: "https://github.com/raksasbun2006"
     },
     {
-      name: "Daniel Ok",
-      role: "Co-Founder & CTO",
+      name: "Heng Menghort",
+      role: "Backend developer",
       bio: "Architecting modern, reliable, and scalable technology for job seekers and employers.",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400",
+      image: "./images/team.jpg",
       linkedin: "https://linkedin.com",
       github: "https://github.com"
     }

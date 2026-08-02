@@ -12,7 +12,7 @@ export default function Login() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const bannerImage = "https://static.vecteezy.com/system/resources/previews/010/442/458/non_2x/search-job-of-people-online-find-vacancy-employment-go-to-career-of-hire-people-seek-opportunity-for-vacancy-or-work-position-search-new-work-in-internet-illustration-vector.jpg"
+  const bannerImage = "./images/bannerAuth.png"
 
   const onSubmit = async (data) => {
     try {
@@ -51,15 +51,6 @@ export default function Login() {
             </Link>
           </div>
 
-          {/* Center Message */}
-          <div className="relative z-10 my-auto">
-            <h1 className="text-3xl font-bold leading-relaxed lg:text-4xl lg:leading-snug">
-              ស្វែងរកការងារក្នុងក្ដីស្រមៃរបស់អ្នក
-            </h1>
-            <p className="mt-4 text-base text-slate-200 leading-relaxed">
-              ចូលដើម្បីបន្តស្វែងរកការងារ ឬគ្រប់គ្រងការជ្រើសរើសបុគ្គលិកសម្រាប់ក្រុមហ៊ុនរបស់អ្នក។
-            </p>
-          </div>
 
           {/* Footer Copyright */}
           <div className="relative z-10 text-xs text-slate-300">

@@ -20,6 +20,17 @@ export default function Jobs() {
   const page = Number(params.get('page') || 1)
 
   useEffect(() => {
+    setParams((prev) => {
+      const next = new URLSearchParams(prev)
+      debouncedKeyword ? next.set('keyword', debouncedKeyword) : next.delete('keyword')
+      type ? next.set('type', type) : next.delete('type')
+      location ? next.set('location', location) : next.delete('location')
+      next.set('page', '1')
+      return next
+    })
+  }, [debouncedKeyword, type, location])
+
+  useEffect(() => {
     setJobs(null)
     getJobs({
       keyword: debouncedKeyword || undefined,
@@ -32,7 +43,13 @@ export default function Jobs() {
       .catch(() => setJobs([]))
   }, [debouncedKeyword, type, location, page, params])
 
-  const updatePage = (p) => setParams((prev) => { prev.set('page', p); return prev })
+  const updatePage = (p) => {
+    setParams((prev) => {
+      const next = new URLSearchParams(prev)
+      next.set('page', String(p))
+      return next
+    })
+  }
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -67,7 +84,7 @@ export default function Jobs() {
             {jobs.map((job) => <JobCard key={job.id} job={job} />)}
           </div>
         )}
-        <Pagination meta={meta} onPageChange={updatePage} />
+        <Pagination meta={meta} currentPage={page} onPageChange={updatePage} />
       </div>
     </div>
   )

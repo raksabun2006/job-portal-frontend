@@ -12,7 +12,7 @@ export default function Register() {
   const navigate = useNavigate()
   const role = watch('role')
 
-  const bannerImage = "https://static.vecteezy.com/system/resources/previews/010/442/458/non_2x/search-job-of-people-online-find-vacancy-employment-go-to-career-of-hire-people-seek-opportunity-for-vacancy-or-work-position-search-new-work-in-internet-illustration-vector.jpg"
+  const bannerImage = "./images/bannerAuth.png"
 
   const onSubmit = async (data) => {
     try {
@@ -54,14 +54,7 @@ export default function Register() {
           </div>
 
           {/* Center Message */}
-          <div className="relative z-10 my-auto">
-            <h1 className="text-3xl font-bold leading-relaxed lg:text-4xl lg:leading-snug">
-              បង្កើតអនាគតអាជីពរបស់អ្នកជាមួយ CareerKH
-            </h1>
-            <p className="mt-4 text-base text-slate-200 leading-relaxed">
-              បង្កើតគណនីដើម្បីចាប់ផ្តើមស្វែងរកការងារ ឬដាក់ពាក្យ និងជ្រើសរើសបុគ្គលិកឆ្នើម។
-            </p>
-          </div>
+         
 
           {/* Footer Copyright */}
           <div className="relative z-10 text-xs text-slate-300">
@@ -85,11 +78,11 @@ export default function Register() {
               <div className="grid grid-cols-2 gap-3">
                 <label className={`cursor-pointer rounded-xl border p-3 text-center text-sm font-semibold transition-all ${role === 'candidate' ? 'border-blue-600 bg-blue-50 text-blue-700 ring-1 ring-blue-600' : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}>
                   <input type="radio" value="candidate" className="hidden" {...register('role')} />
-                  បេក្ខជន · Candidate
+                  Candidate
                 </label>
                 <label className={`cursor-pointer rounded-xl border p-3 text-center text-sm font-semibold transition-all ${role === 'employer' ? 'border-blue-600 bg-blue-50 text-blue-700 ring-1 ring-blue-600' : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}>
                   <input type="radio" value="employer" className="hidden" {...register('role')} />
-                  និយោជក · Employer
+                  Employer
                 </label>
               </div>
             </div>
