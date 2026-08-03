@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -11,6 +12,10 @@ export default function Register() {
   const { register: doRegister } = useAuth()
   const navigate = useNavigate()
   const role = watch('role')
+
+  // States to control password visibility
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const bannerImage = "./images/bannerAuth.png"
 
@@ -26,15 +31,13 @@ export default function Register() {
       toast.error(msg)
     }
   }
-  
+
   return (
     <div className="flex min-h-dvh w-full bg-slate-100 font-sans">
       <div className="flex w-full flex-col bg-white md:h-dvh md:flex-row">
         
         {/* Left Side: Full Height Promotional Banner */}
         <div className="relative hidden flex-col justify-between p-8 text-white md:flex md:w-1/2 lg:p-16">
-          
-          {/* Background Image & Gradient Overlay */}
           <img 
             src={bannerImage} 
             alt="Register Banner" 
@@ -44,7 +47,7 @@ export default function Register() {
 
           {/* Top Logo */}
           <div className="relative z-10 flex items-center gap-2">
-             <Link to="/" className="inline-flex items-center gap-2">
+            <Link to="/" className="inline-flex items-center gap-2">
               <img 
                 src="/images/logo.png" 
                 alt="Logo" 
@@ -53,16 +56,13 @@ export default function Register() {
             </Link>
           </div>
 
-          {/* Center Message */}
-         
-
           {/* Footer Copyright */}
           <div className="relative z-10 text-xs text-slate-300">
             &copy; {new Date().getFullYear()} CareerKH. All rights reserved.
           </div>
         </div>
 
-        {/* Right Side: Register Form (full height + independent scroll only once the split layout kicks in at md) */}
+        {/* Right Side: Register Form */}
         <div className="flex w-full flex-col justify-center p-6 sm:p-8 md:h-full md:overflow-y-auto md:w-1/2 lg:p-16">
           <div className="mx-auto w-full max-w-md py-6">
             <div>
@@ -137,28 +137,71 @@ export default function Register() {
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {/* Password Field */}
                 <div>
                   <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700">
                     ពាក្យសម្ងាត់ · Password
                   </label>
-                  <input 
-                    type="password" 
-                    placeholder="••••••••" 
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
-                    {...register('password', { required: true, minLength: 8 })} 
-                  />
+                  <div className="relative">
+                    <input 
+                      type={showPassword ? 'text' : 'password'} 
+                      placeholder="••••••••" 
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-10 py-3 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
+                      {...register('password', { required: true, minLength: 8 })} 
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none"
+                    >
+                      {showPassword ? (
+                        /* Hide Eye Icon */
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                      ) : (
+                        /* Show Eye Icon */
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12c1.074-4.65 5.062-8 10.222-8 5.16 0 9.148 3.35 10.222 8-1.074 4.65-5.062 8-10.222 8-5.16 0-9.148-3.35-10.222-8z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
                   {errors.password && <p className="mt-1 text-xs text-rose-600">យ៉ាងហោចណាស់ ៨ តួអក្សរ។</p>}
                 </div>
+
+                {/* Confirm Password Field */}
                 <div>
                   <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-700">
                     បញ្ជាក់ពាក្យសម្ងាត់
                   </label>
-                  <input 
-                    type="password" 
-                    placeholder="••••••••" 
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
-                    {...register('password_confirmation', { required: true })} 
-                  />
+                  <div className="relative">
+                    <input 
+                      type={showConfirmPassword ? 'text' : 'password'} 
+                      placeholder="••••••••" 
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 pl-4 pr-10 py-3 text-sm text-slate-900 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20" 
+                      {...register('password_confirmation', { required: true })} 
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPassword((prev) => !prev)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none"
+                    >
+                      {showConfirmPassword ? (
+                        /* Hide Eye Icon */
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                      ) : (
+                        /* Show Eye Icon */
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12c1.074-4.65 5.062-8 10.222-8 5.16 0 9.148 3.35 10.222 8-1.074 4.65-5.062 8-10.222 8-5.16 0-9.148-3.35-10.222-8z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
 
