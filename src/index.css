@@ -21,7 +21,7 @@
 
 @layer base {
   html, body {
-    @apply bg-paper text-ink-900;
+    @apply bg-paper text-ink-900 overflow-x-hidden;
   }
 
   body {

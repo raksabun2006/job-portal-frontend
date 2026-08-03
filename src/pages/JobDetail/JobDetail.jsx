@@ -56,21 +56,21 @@ export default function JobDetail() {
   const companyName = job.company?.name || 'Company'
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-6 sm:py-10">
       <Link to="/jobs" className="text-sm font-medium text-teal-600 transition-colors hover:text-teal-700 hover:underline">
         ← ត្រឡប់ទៅការងារទាំងអស់
       </Link>
 
       {/* Main 2-Column Grid */}
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
-        
+
         {/* LEFT COLUMN: Main Job Details & Application Form */}
         <div className="space-y-6 lg:col-span-2">
-          <div className="rounded-2xl border border-ink-900/10 bg-white p-6 shadow-sm md:p-8">
+          <div className="rounded-2xl border border-ink-900/10 bg-white p-5 shadow-sm sm:p-6 md:p-8">
             {/* Header Header Info */}
             <div className="flex items-start justify-between gap-4">
-              <div className="flex items-start gap-4">
-                <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-ink-900/10 bg-ink-900/5 font-bold text-ink-800">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-ink-900/10 bg-ink-900/5 font-bold text-ink-800 sm:h-14 sm:w-14">
                   {job.company?.logo ? (
                     <img
                       src={job.company.logo}
@@ -84,9 +84,9 @@ export default function JobDetail() {
                   )}
                 </div>
 
-                <div>
-                  <h1 className="text-2xl font-bold tracking-tight text-ink-950 md:text-3xl">{job.title}</h1>
-                  <p className="mt-1 text-base font-medium text-ink-800/70">
+                <div className="min-w-0">
+                  <h1 className="text-xl font-bold tracking-tight text-ink-950 sm:text-2xl md:text-3xl">{job.title}</h1>
+                  <p className="mt-1 text-sm font-medium text-ink-800/70 sm:text-base">
                     {companyName} · {job.location}
                   </p>
                 </div>

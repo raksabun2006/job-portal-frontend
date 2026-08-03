@@ -28,8 +28,8 @@ export default function Register() {
   }
   
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-slate-100 font-sans">
-      <div className="flex h-full w-full bg-white">
+    <div className="flex min-h-dvh w-full bg-slate-100 font-sans">
+      <div className="flex w-full flex-col bg-white md:h-dvh md:flex-row">
         
         {/* Left Side: Full Height Promotional Banner */}
         <div className="relative hidden flex-col justify-between p-8 text-white md:flex md:w-1/2 lg:p-16">
@@ -62,11 +62,11 @@ export default function Register() {
           </div>
         </div>
 
-        {/* Right Side: Full Height Register Form */}
-        <div className="flex h-full w-full flex-col justify-center overflow-y-auto p-8 md:w-1/2 lg:p-16">
-          <div className="mx-auto my-auto w-full max-w-md py-6">
+        {/* Right Side: Register Form (full height + independent scroll only once the split layout kicks in at md) */}
+        <div className="flex w-full flex-col justify-center p-6 sm:p-8 md:h-full md:overflow-y-auto md:w-1/2 lg:p-16">
+          <div className="mx-auto w-full max-w-md py-6">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">ចុះឈ្មោះ · Register</h2>
+              <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">ចុះឈ្មោះ · Register</h2>
               <p className="mt-2 text-sm text-slate-500">បំពេញព័ត៌មានខាងក្រោមដើម្បីបង្កើតគណនីថ្មី។</p>
             </div>
 
@@ -88,7 +88,7 @@ export default function Register() {
             </div>
 
             {/* Google Quick Registration */}
-            <div className="mt-4 flex justify-center">
+            <div className="mt-4">
               <GoogleLoginButton role={role} />
             </div>
 

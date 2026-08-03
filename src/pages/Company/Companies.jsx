@@ -21,13 +21,13 @@ export default function Companies() {
   }, [debounced, page])
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-2xl font-semibold text-ink-950">ក្រុមហ៊ុន · Companies</h1>
+    <div className="mx-auto max-w-6xl px-4 py-6 sm:py-10">
+      <h1 className="text-xl font-semibold text-ink-950 sm:text-2xl">ក្រុមហ៊ុន · Companies</h1>
       <input
         value={keyword}
         onChange={(e) => { setKeyword(e.target.value); setPage(1) }}
         placeholder="ស្វែងរកក្រុមហ៊ុន..."
-        className="input mt-6 max-w-md"
+        className="input mt-6 w-full sm:max-w-md"
       />
 
       <div className="mt-8">

@@ -26,8 +26,8 @@ export default function Login() {
   }
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-slate-100 font-sans">
-      <div className="flex h-full w-full bg-white">
+    <div className="flex min-h-dvh w-full bg-slate-100 font-sans">
+      <div className="flex w-full flex-col bg-white md:h-dvh md:flex-row">
         
         {/* Left Side: Full Height Promotional Banner */}
         <div className="relative hidden flex-col justify-between p-8 text-white md:flex md:w-1/2 lg:p-16">
@@ -58,11 +58,11 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Right Side: Full Height Login Form */}
-        <div className="flex h-full w-full flex-col justify-center overflow-y-auto p-8 md:w-1/2 lg:p-16">
-          <div className="mx-auto w-full max-w-md">
+        {/* Right Side: Login Form (full height + independent scroll only once the split layout kicks in at md) */}
+        <div className="flex w-full flex-col justify-center p-6 sm:p-8 md:h-full md:overflow-y-auto md:w-1/2 lg:p-16">
+          <div className="mx-auto w-full max-w-md py-8 md:py-0">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">ចូលគណនី · Login</h2>
+              <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">ចូលគណនី · Login</h2>
               <p className="mt-2 text-sm text-slate-500">សូមបញ្ចូលព័ត៌មានលម្អិតរបស់អ្នកដើម្បីបន្ត។</p>
             </div>
 
@@ -111,9 +111,7 @@ export default function Login() {
               <div className="h-px flex-1 bg-slate-200" />
             </div>
 
-            <div className="flex justify-center">
-              <GoogleLoginButton role="candidate" />
-            </div>
+            <GoogleLoginButton role="candidate" />
 
             <p className="mt-8 text-center text-sm text-slate-600">
               មិនទាន់មានគណនី?{' '}

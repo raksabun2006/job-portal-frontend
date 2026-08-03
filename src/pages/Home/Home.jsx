@@ -55,22 +55,22 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20">
       
       {/* Hero Section with Blue Gradient Overlay */}
-      <section className="relative bg-slate-900 text-white overflow-hidden py-20 md:py-28">
+      <section className="relative bg-slate-900 text-white overflow-hidden py-12 sm:py-20 md:py-28">
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center transition-all duration-500"
-          style={{ 
-            backgroundImage: `url('https://media.licdn.com/dms/image/v2/D4E12AQHSP2c-t1xwMg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1699539921842?e=2147483647&v=beta&t=dbcfO4OnNcIHtlLy3Qdg4pJJQjQewH7DY0gVe-4xm0k')` 
+          style={{
+            backgroundImage: `url('https://media.licdn.com/dms/image/v2/D4E12AQHSP2c-t1xwMg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1699539921842?e=2147483647&v=beta&t=dbcfO4OnNcIHtlLy3Qdg4pJJQjQewH7DY0gVe-4xm0k')`
           }}
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-blue-950/70 to-slate-950/80" />
 
         <div className="relative z-20 mx-auto max-w-6xl px-4">
-          
+
           {/* Main Hero Headline */}
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Great Careers. <span className="underline decoration-blue-400 underline-offset-8">Start here!</span>
             </h1>
           </div>
@@ -192,10 +192,10 @@ export default function Home() {
       </section>
 
       {/* Main Content Area */}
-      <section className="mx-auto max-w-6xl px-4 pt-10">
-        
+      <section className="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+
         {/* Top Companies Section Grid */}
-        <div className="mb-14">
+        <div className="mb-10 sm:mb-14">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h3 className="text-lg font-bold text-slate-900">
@@ -227,10 +227,11 @@ export default function Home() {
         </div>
 
         {/* Content Layout with Sidebar */}
+        {/* Mobile priority: jobs first (what people came for), categories second. Restored to sidebar-left order at lg. */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-          
+
           {/* Left Column: Job Categories */}
-          <div className="lg:col-span-4">
+          <div className="order-2 lg:order-1 lg:col-span-4">
             <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm">
               <h3 className="mb-4 text-base font-bold text-slate-900">ប្រភេទការងារ · Categories</h3>
               <div className="divide-y divide-slate-100">
@@ -254,7 +255,7 @@ export default function Home() {
           </div>
 
           {/* Right Column: Latest Job Listings */}
-          <div className="lg:col-span-8">
+          <div className="order-1 lg:order-2 lg:col-span-8">
             <div className="mb-5 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold tracking-tight text-slate-900">

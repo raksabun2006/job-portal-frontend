@@ -91,7 +91,7 @@ export default function Notifications() {
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           {/* Segmented Filter Control */}
           <div className="inline-flex rounded-xl bg-ink-900/5 p-1">
             <button

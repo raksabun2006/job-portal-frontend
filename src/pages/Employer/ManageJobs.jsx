@@ -93,11 +93,11 @@ export default function ManageJobs() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-xl font-semibold text-ink-950">
           គ្រប់គ្រងការងារ · Manage Jobs
         </h1>
-        <Link to="/employer/jobs/new" className="btn-accent">
+        <Link to="/employer/jobs/new" className="btn-accent w-full justify-center sm:w-auto">
           + ដាក់ការងារថ្មី
         </Link>
       </div>
@@ -110,14 +110,14 @@ export default function ManageJobs() {
       ) : (
         <div className="card mt-6 divide-y divide-ink-900/8">
           {jobs.map((job) => (
-            <div key={job.id} className="flex items-center justify-between p-4">
-              <div>
+            <div key={job.id} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
                 <p className="font-medium text-ink-950">{job.title}</p>
                 <p className="text-sm text-ink-800/60">
                   {job.applications_count ?? 0} ពាក្យសុំ
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                 <StatusBadge status={job.status} />
                 <button
                   onClick={() => setQrJob(job)}
