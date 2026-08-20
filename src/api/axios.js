@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://job-portal-backend-job-portal-50qmz5.laravel.cloud/api'
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://job-portal-api-v1.laravel.cloud/api'
 export const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, '')
 
 const api = axios.create({
